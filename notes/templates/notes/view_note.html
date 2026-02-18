@@ -1,0 +1,24 @@
+<!-- notes/templates/notes/view_note.html -->
+{% extends 'base.html' %}
+{% block title %}
+    Sticky Notes - {{ post.title }}
+{% endblock %}
+{% block content %}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                {{note.title}}
+            </h5>
+            <p class="card-text">
+                {{ note.content}}
+            </p>
+            <p>
+                Created at: {{ note.date_assigned }}
+            </p>
+        </div>
+    </div>
+    <a href="{% url 'edit_note' pk=note.pk %}"> Edit Note</a>
+    <a href="{% url 'delete_note' pk=note.pk %}"> Delete Note</a>
+    <a href="{% url 'all_notes' %}">Back to Notes</a>
+{% endblock %}

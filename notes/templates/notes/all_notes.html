@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- notes/templates/notes/all_notes.html -->
+{% extends 'base.html' %}
+{% block title %}
+    Sticky Notes - {{ page_title }}
+{% endblock %}
+{% block content %}
+    <h2>
+        {{ page_title }}
+    </h2>
+    <ul>
+        <a href="{% url 'write_note' %}">
+            <div class="card" style="height: 14.05rem;width: 14.05rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqG14nZJYx-OA2M_1id2Oy-39802XFM1xbA&s"
+                class="card-img-top" alt="add_note_plus_sign">
+            </div>
+        </a>
+        {% for note in notes %}
+            <li>
+                <div class="card" style="height: 14.05rem;width: 14.05rem;">
+                    <a href="{% url 'view_note' pk=note.pk %}">{{note.title}}</a>
+                    <p>
+                        {{ note.content }}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
